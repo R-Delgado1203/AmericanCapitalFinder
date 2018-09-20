@@ -1,9 +1,21 @@
-var userQuery = "Phoenix, AZ";
-var queryURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch="+ userQuery;
+var userQuery = "";
 
-$.ajax({
-  url: queryURL,
-  method: "GET",
-}).then(function(response) {
-  console.log(response);
+
+$("#button").on("click", function () {
+  userQuery = $("#autocomplete-input").val();
+  callAPI();
 });
+
+function callAPI() {
+  var searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=';
+  var search = searchUrl + userQuery;
+
+  $.ajax({
+    url: search,
+    method: "GET",
+    dataType: "json"
+  }).then(function (response) {
+    console.log(response);
+  });
+
+}
