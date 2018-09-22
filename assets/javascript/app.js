@@ -2,18 +2,40 @@ $(document).ready(function () {
 
   //api call/build domm
   function callAPI(query) {
-    var searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=';
-    var search = searchUrl + query;
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&prop=revisions&rvprop=content&rvsection=0&search=';
+    var wikiSearch = wikiUrl + query;
 
     $.ajax({
-      url: search,
+      url: wikiSearch,
       method: "GET",
       dataType: "json"
     }).then(function (response) {
+      
       console.log(response);
+      var description = response[2][0];
+      console.log(description);
       
 
+      
+      var div = $("<div>");
+      div.text(description.toString());
+      $("#return").append(div);
+
     });
+
+    var mapUrl = "";
+    var mapSearch = mapUrl + query;
+
+    $.ajax({
+      url: mapSearch,
+      method: "GET",
+      dataType: "json"
+    }).then(function (response) {
+
+
+    });
+
+
   }
 
   // Initialize Firebase
@@ -30,7 +52,6 @@ $(document).ready(function () {
   var db = firebase.database();
   var statesObj = {};
   db.ref().on('value', function(snapshot) {
-    //callAPI(city, snapshot.val());
     statesObj = snapshot.val();
   });
 
@@ -40,16 +61,10 @@ $(document).ready(function () {
     console.log(state);
     var city = statesObj[state];
     if (city){
+      $("#return").empty();
       callAPI(city);
-    }
-    //console.log(queryTerm);
-    //callAPI(queryTerm);
+    };
   });//end submit-btn
-
-
-
-
-
 
   //fill auto-complete form
   $('input.autocomplete').autocomplete({
