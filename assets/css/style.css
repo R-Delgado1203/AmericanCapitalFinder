@@ -16,8 +16,9 @@
 }
 
 body {
-    background-color: whitesmoke;
-    
+    background: url(../images/capitol-hill.jpg);
+    background-size: cover;
+    background-attachment: fixed; 
 }
 
 main {
@@ -38,4 +39,17 @@ main {
 img {
     height: 150px;
     width: 250px;
+}
+
+#return {
+    background-color: rgb(18, 171, 218);
+    color: white;
+}
+
+#secondary {
+    background-color: rgb(18, 171, 218);  
+    color: white;  
+}
+#clear-btn {
+    background-color: rgb(18, 171, 218);
 }
