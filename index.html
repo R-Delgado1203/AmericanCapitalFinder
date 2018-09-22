@@ -24,13 +24,31 @@
 
 <body>
     <div class="container">
-        <nav>
-            <div class="nav-wrapper" id="head">
-                <a href="#" class="brand-logo">The best!</a>
-            </div>
+        <nav id="head">
+            The best
         </nav>
-    </div>
 
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="images/office.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+                    <a href="#name"><span class="white-text name">John Doe</span></a>
+                    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                </div>
+            </li>
+            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+            <li><a href="#!">Second Link</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader">Subheader</a></li>
+            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col s12">
@@ -42,40 +60,30 @@
                         <button id="button" class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right"></i>
                         </button>
+                        <a class="waves-effect waves-light btn" id="clear-btn">Clear</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-
-
+    <div class="container" id="box">
+        <div class="row">
+            <div class="col s7 push-s5" id="return"><span class="flow-text">This div is 7-columns wide on pushed to the
+                    right by 5-columns.</span></div>
+            <div class="col s5 pull-s7" id="secondary"><span class="flow-text">5-columns wide pulled to the left by
+                    7-columns.</span></div>
+        </div>
+    </div>
     <footer class="page-footer">
         <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your
-                        footer
-                        content.</p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2018 Copyright
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </footer>
-    </div>
+
+
+
+
     <!--javaScript-->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
