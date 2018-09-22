@@ -1,17 +1,9 @@
-
 $(document).ready(function () {
 
-  var userQuery = "Phoenix, Arizona";
-  callAPI(userQuery);
-
-  $("#button").on("click", function () {
-    userQuery = $("#autocomplete-input").val();
-    callAPI();
-  });
-
+  //api call/build domm
   function callAPI(query) {
     var searchUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=';
-    var search = searchUrl + userQuery;
+    var search = searchUrl + query;
 
     $.ajax({
       url: search,
@@ -19,8 +11,9 @@ $(document).ready(function () {
       dataType: "json"
     }).then(function (response) {
       console.log(response);
-    });
+      
 
+    });
   }
 
   // Initialize Firebase
@@ -34,10 +27,31 @@ $(document).ready(function () {
   };
   firebase.initializeApp(config);
 
-
   var db = firebase.database();
+  var statesObj = {};
+  db.ref().on('value', function(snapshot) {
+    //callAPI(city, snapshot.val());
+    statesObj = snapshot.val();
+  });
+
+  $("#submit-btn").on("click", function () {
+    var state = $("#city-list").val();
+    state = state.replace(/ /g,"_");
+    console.log(state);
+    var city = statesObj[state];
+    if (city){
+      callAPI(city);
+    }
+    //console.log(queryTerm);
+    //callAPI(queryTerm);
+  });//end submit-btn
 
 
+
+
+
+
+  //fill auto-complete form
   $('input.autocomplete').autocomplete({
     data: {
       "New York":null,
@@ -91,29 +105,6 @@ $(document).ready(function () {
       "Kansas":null,
       "New Jersey":null
     },
-  });
-  
-  
-  
-
-  $("#submit-btn").on("click", function () {
-    var city = $("#city-list").val();
-    city = city.replace(/ /g,"_");
-    console.log(city);
-
-    
-
-
-
-
-
-
-  });
-
-
-
-
-
-
-
-});
+  });//end autocomplete form build
+  $('.sidenav').sidenav();
+}); //end documentready
