@@ -1,11 +1,8 @@
 $(document).ready(function () {
-  //google api key AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I
-
   //api call/build domm
   function callAPI(query) {
-    var wikiUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro&explaintext&redirects=1&callback=?&titles=';    
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro&explaintext&redirects=1&callback=?&titles=';
     var wikiSearch = wikiUrl + query;
-    
 
     $.ajax({
       url: wikiSearch,
@@ -24,33 +21,19 @@ $(document).ready(function () {
       $("#wiki-link").text("Link to Wikipedia");
       console.log(pageLink);
 
-
       //google static img appi call
       var mapApiLink = "https://maps.googleapis.com/maps/api/staticmap?center=" + query + "&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I"
       var map = $("<img>").attr("src", mapApiLink);
-      map.appendTo("#map-p");
+      map.attr("id", "map-img");
+      map.prependTo("#map-p");
 
-      /* var wikiDiv = $("<div>");
-      wikiDiv.text(description.toString());
-      wikiDiv.attr("class", "col s7")
-      wikiDiv.attr("id", "return");
-      $("#response").append(wikiDiv); */
+      var mapLink = "https://www.google.com/maps/place/" + query;
+      $("#map-link").attr("href", mapLink);
+      $("#map-link").text("Link to Maps");
 
+      $("div#info-card").show();
+      $("div#map-card").show();
     });
-    
-
-
-/*     var mapUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + query + '&key=AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I&callback=?' + query;
-    var mapSearch = mapUrl + query;
-
-    $.ajax({
-      url: mapSearch,
-      method: "GET",
-      dataType: "jsonp"
-    }).then(function (response) {
-      console.log(response);
-    }); */
-
   }//end callAPI 
 
   // Initialize Firebase
@@ -64,6 +47,7 @@ $(document).ready(function () {
   };
   firebase.initializeApp(config);
 
+  //set db object to local obj variable for access
   var db = firebase.database();
   var statesObj = {};
   db.ref().on('value', function (snapshot) {
@@ -71,17 +55,15 @@ $(document).ready(function () {
     console.log(statesObj);
   });
 
-
+  //submit onclick handler
   $("#submit-btn").on("click", function () {
-    $("div#info-card").show();
-    $("div#map-card").show();
-    var obj = document.createElement("audio");
-    obj.src = "http://soundbible.com/grab.php?id=1844&type=wav";
-    obj.volume = 0.1;
-    obj.autoPlay = false;
-    obj.preLoad = true;
-    obj.controls = true;
-    obj.play();
+    var eagle = document.createElement("audio");
+    eagle.src = "http://soundbible.com/grab.php?id=1844&type=wav";
+    eagle.volume = 0.1;
+    eagle.autoPlay = false;
+    eagle.preLoad = true;
+    eagle.controls = true;
+    eagle.play();
     var state = $("#state-list").val();
     state = state.replace(/ /g, "_");
     console.log(state);
@@ -93,9 +75,29 @@ $(document).ready(function () {
     };
   });//end submit-btn
   
+  $("#clear-btn").on("click", function () {
+    $("div#info-card").hide();
+    $("div#map-card").hide();
+    $('#state-list').val("");
+  });//end clear-btn
+
+  $("#random-btn").on("click", function () {
+    var randomState = Object.keys(statesObj);
+    randomState = randomState[Math.floor(Math.random() * randomState.length)];
+    console.log(randomState);
+    var randomCity = statesObj[randomState];
+    if (randomCity) {
+      $("#map-p").empty();
+      $("#info-title").text(randomCity);
+      callAPI(randomCity);
+    };
+    randomState = randomState.replace(/_/g, " ");
+    $('#state-list').val(randomState);
+  });//end random-btn
+
   //fill auto-complete form
   $('input.autocomplete').autocomplete({
-    data: {
+    data:{
       "New York": null,
       "Maryland": null,
       "Georgia": null,
