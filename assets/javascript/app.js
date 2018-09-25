@@ -5,6 +5,7 @@ $(document).ready(function () {
   function callAPI(query) {
     var wikiUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro&explaintext&redirects=1&callback=?&titles=';    
     var wikiSearch = wikiUrl + query;
+    
 
     $.ajax({
       url: wikiSearch,
@@ -69,9 +70,18 @@ $(document).ready(function () {
     statesObj = snapshot.val();
     console.log(statesObj);
   });
-  console.log(statesObj);
+
 
   $("#submit-btn").on("click", function () {
+    $("div#info-card").show();
+    $("div#map-card").show();
+    var obj = document.createElement("audio");
+    obj.src = "http://soundbible.com/grab.php?id=1844&type=wav";
+    obj.volume = 0.1;
+    obj.autoPlay = false;
+    obj.preLoad = true;
+    obj.controls = true;
+    obj.play();
     var state = $("#state-list").val();
     state = state.replace(/ /g, "_");
     console.log(state);
@@ -82,7 +92,7 @@ $(document).ready(function () {
       callAPI(city);
     };
   });//end submit-btn
-
+  
   //fill auto-complete form
   $('input.autocomplete').autocomplete({
     data: {

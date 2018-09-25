@@ -74,9 +74,15 @@ img {
     padding-left: 5px;
     font-weight: bold;
 }
-#search-container{
+#search-container {
     /* background-color: whitesmoke; */
 }
 .autocomplete{
     color: white;
+}
+#map-card {
+    display: none;    
+}
+#info-card {
+    display: none;
 }
