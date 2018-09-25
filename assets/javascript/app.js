@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   //api call/build domm
   function callAPI(query) {
-    var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&prop=revisions&rvprop=content&rvsection=0&search=';
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=';
     var wikiSearch = wikiUrl + query;
 
     $.ajax({
@@ -14,12 +14,19 @@ $(document).ready(function () {
       console.log(response);
       var description = response[2][0];
       console.log(description);
+      var link = response[3][0];
+      console.log(link);
+      
+      $("#info-p").text(description);
+      $("#wiki-link").attr("href", link);
+      $("#wiki-link").text("Link to Wikipedia");
       
 
-      
-      var div = $("<div>");
-      div.text(description.toString());
-      $("#return").append(div);
+      /* var wikiDiv = $("<div>");
+      wikiDiv.text(description.toString());
+      wikiDiv.attr("class", "col s7")
+      wikiDiv.attr("id", "return");
+      $("#response").append(wikiDiv); */
 
     });
 
@@ -56,12 +63,12 @@ $(document).ready(function () {
   });
 
   $("#submit-btn").on("click", function () {
-    var state = $("#city-list").val();
+    var state = $("#state-list").val();
     state = state.replace(/ /g,"_");
     console.log(state);
     var city = statesObj[state];
     if (city){
-      $("#return").empty();
+      $("#info-title").text(city);
       callAPI(city);
     };
   });//end submit-btn
@@ -123,3 +130,5 @@ $(document).ready(function () {
   });//end autocomplete form build
   $('.sidenav').sidenav();
 }); //end documentready
+
+

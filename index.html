@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 
 
@@ -26,8 +28,8 @@
 
 <body>
     <div class="container">
-        <nav id="head">
-            The best
+        <nav id="head" class="center-align">
+            Capital Finder
         </nav>
 
         <ul id="slide-out" class="sidenav">
@@ -36,7 +38,8 @@
                     <div class="background">
                         <!-- <img src="..."> -->
                     </div>
-                    <a href="#user"><!-- <img class="circle" src="..."> --></a>
+                    <a href="#user">
+                        <!-- <img class="circle" src="..."> --></a>
                     <a href="#name"><span class="white-text name">John Doe</span></a>
                     <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
                 </div>
@@ -49,16 +52,21 @@
             <li><a class="subheader">Subheader</a></li>
             <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col s12">
+        <div class="row" id="search-container">
+            <div class="col s12 hoverable">
                 <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix"></i>
-                        <input type="text" id="city-list" class="autocomplete">
-                        <label for="city-list-input"></label>
+                    <div id="side-nav" class="col s1 center-align">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger">
+                            <i class="material-icons valign-wrapper">menu</i>
+                        </a>
+                    </div>
+                    <div id="input-form" class="input-field col s10">
+                        <i class="material-icons prefix center-align">search</i>
+                        <input type="text" id="state-list" class="autocomplete">
+                        <label for="state-list-input"></label>
                         <button id="submit-btn" class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right"></i>
                         </button>
@@ -67,13 +75,37 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container" id="box">
-        <div class="row">
-            <div class="col s7" id="return"></div>
-            <div class="col s5" id="secondary"></div>
+
+        <div class="row" id="response">
+            <div class='col s7'>
+                <div class='col s12' id='info-card'>
+                    <div class='card blue darken-1'>
+                        <div class='card-content white-text'><span id='info-title' class='card-title'>Welcome!</span>
+                            <p id=info-p>Use the search bar above to select a State and get information on its Capital
+                                City.</p>
+                        </div>
+                        <div class='card-action'><a id='wiki-link'></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s5">
+                <div class="col s12" id="map-card">
+                    <div class='card blue darken-1'>
+                        <div class='card-content white-text'><span id='map-title' class='card-title'>Welcome!</span>
+                            <p id=map-p></p>
+                        </div>
+                        <div class='card-action'><a id='map-link'></a></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+    <!--     <div class="container" id="box">
+        <div class="row">
+            
+        </div>
+    </div> -->
     <footer class="page-footer">
         <div class="container">
             © 2018 Copyright
@@ -85,7 +117,7 @@
 
 
     <!--javaScript-->
-    
+
 
 </body>
 
