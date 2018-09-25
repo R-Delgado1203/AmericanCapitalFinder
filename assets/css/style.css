@@ -81,8 +81,12 @@ img {
     color: white;
 }
 #map-card {
-    display: none;    
+    background-color: #1e88e5;
+    display: none;   
 }
 #info-card {
     display: none;
+}
+img {
+    height: 300px;
 }
