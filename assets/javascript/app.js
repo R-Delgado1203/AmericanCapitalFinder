@@ -28,9 +28,11 @@ $(document).ready(function () {
       map.prependTo("#map-p");
 
       var mapLink = "https://www.google.com/maps/place/" + query;
-      $("#map-link").attr("href", mapLink);      
+      $("#map-link").attr("href", mapLink);
       $("#map-link").text("Link to Maps");
 
+      $("div#info-card").show();
+      $("div#map-card").show();
     });
   }//end callAPI 
 
@@ -44,7 +46,7 @@ $(document).ready(function () {
     messagingSenderId: "715446005740"
   };
   firebase.initializeApp(config);
-  
+
   //set db object to local obj variable for access
   var db = firebase.database();
   var statesObj = {};
@@ -55,8 +57,6 @@ $(document).ready(function () {
 
   //submit onclick handler
   $("#submit-btn").on("click", function () {
-    $("div#info-card").show();
-    $("div#map-card").show();
     var eagle = document.createElement("audio");
     eagle.src = "http://soundbible.com/grab.php?id=1844&type=wav";
     eagle.volume = 0.1;
@@ -74,16 +74,30 @@ $(document).ready(function () {
       callAPI(city);
     };
   });//end submit-btn
-
+  
   $("#clear-btn").on("click", function () {
     $("div#info-card").hide();
     $("div#map-card").hide();
     $('#state-list').val("");
   });//end clear-btn
 
+  $("#random-btn").on("click", function () {
+    var randomState = Object.keys(statesObj);
+    randomState = randomState[Math.floor(Math.random() * randomState.length)];
+    console.log(randomState);
+    var randomCity = statesObj[randomState];
+    if (randomCity) {
+      $("#map-p").empty();
+      $("#info-title").text(randomCity);
+      callAPI(randomCity);
+    };
+    randomState = randomState.replace(/_/g, " ");
+    $('#state-list').val(randomState);
+  });//end random-btn
+
   //fill auto-complete form
   $('input.autocomplete').autocomplete({
-    data: {
+    data:{
       "New York": null,
       "Maryland": null,
       "Georgia": null,

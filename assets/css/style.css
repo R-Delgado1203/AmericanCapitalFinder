@@ -48,18 +48,22 @@ main {
     font-family: 'Raleway', sans-serif;    
 }
 #submit-btn{
-    background-color: #1e88e5;
+    background-color: #f44336;
     color: white;
 }
 #clear-btn{
+    background-color: white;
+    color: black;
+}
+#random-btn{
     background-color: #1e88e5;
     color: white;
 }
-#clear-btn:hover{
+#random-btn:hover{
     background-color: #f44336;
 }
 #submit-btn:hover{
-    background-color: #f44336;
+    background-color: #1e88e5;
 }
 .material-icons{
     color:whitesmoke;
