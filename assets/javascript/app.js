@@ -3,9 +3,8 @@ $(document).ready(function () {
 
   //api call/build domm
   function callAPI(query) {
-    var wikiUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro&explaintext&redirects=1&callback=?&titles=';    
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro&explaintext&redirects=1&callback=?&titles=';
     var wikiSearch = wikiUrl + query;
-    
 
     $.ajax({
       url: wikiSearch,
@@ -24,33 +23,16 @@ $(document).ready(function () {
       $("#wiki-link").text("Link to Wikipedia");
       console.log(pageLink);
 
-
       //google static img appi call
       var mapApiLink = "https://maps.googleapis.com/maps/api/staticmap?center=" + query + "&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I"
       var map = $("<img>").attr("src", mapApiLink);
       map.appendTo("#map-p");
 
-      /* var wikiDiv = $("<div>");
-      wikiDiv.text(description.toString());
-      wikiDiv.attr("class", "col s7")
-      wikiDiv.attr("id", "return");
-      $("#response").append(wikiDiv); */
+      var mapLink = "https://www.google.com/maps/place/" + query;
+      $("#map-link").attr("href", mapLink);
+      $("#map-link").text("Link to Maps");
 
     });
-    
-
-
-/*     var mapUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=' + query + '&key=AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I&callback=?' + query;
-    var mapSearch = mapUrl + query;
-
-    $.ajax({
-      url: mapSearch,
-      method: "GET",
-      dataType: "jsonp"
-    }).then(function (response) {
-      console.log(response);
-    }); */
-
   }//end callAPI 
 
   // Initialize Firebase
@@ -70,7 +52,6 @@ $(document).ready(function () {
     statesObj = snapshot.val();
     console.log(statesObj);
   });
-
 
   $("#submit-btn").on("click", function () {
     $("div#info-card").show();
@@ -92,7 +73,7 @@ $(document).ready(function () {
       callAPI(city);
     };
   });//end submit-btn
-  
+
   //fill auto-complete form
   $('input.autocomplete').autocomplete({
     data: {

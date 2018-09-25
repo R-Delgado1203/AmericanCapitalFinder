@@ -4,23 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Class project 1</title>
+    <title>ACF: The American Capital Finder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--stylesheets-->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-
-
     <!--firebase cdn-->
     <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <!--javaScript-->
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I&callback=initMap"
-    async defer></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
@@ -33,15 +30,13 @@
         <nav id="head" class="center-align">
             Capital Finder
         </nav>
-
         <ul id="slide-out" class="sidenav">
             <li>
                 <div class="user-view">
                     <div class="background">
                         <img src="../Project-1/assets/images/red-white-blue.jpg" alt="red white and blue fireworks">
                     </div>
-                    <a href="#user">
-                        <!-- <img class="circle" src="..."> --></a>
+                    <a href="#user"></a>
                     <a href="#name"><span class="white-text name">Rolando</span></a>
                 </div>
             </li>
@@ -50,8 +45,9 @@
             <li><a href="https://github.com/eggogallego"><i class="material-icons">cloud</i>Jake Gallegos</a></li>
             <li><a href="#!"><i class="material-icons">cloud</i>Nor Mustafa</a></li>
         </ul>
-
     </div>
+    <!--end head container-->
+
     <div class="container">
         <div class="row" id="search-container">
             <div class="col s12 hoverable">
@@ -73,6 +69,7 @@
                 </div>
             </div>
         </div>
+        <!--end search -->
 
         <div class="row" id="response">
             <div class='col s7'>
@@ -91,35 +88,23 @@
                   <div class="card" id="map-card">
                     <div class="card-image" id="map-p">
                       <span class="card-title">Card Title</span>
-                    </div>
-                   
+                    </div>                   
                     <div class="card-action">
-                      <a href=https://www.google.com/maps/@33.3636832,-111.7915888,15z?hl=en>link to Google Maps</a>
+                      <a id="map-link"></a>
                     </div>
                   </div>
                 </div>
               </div>
         </div>
+        <!--end data cards-->
     </div>
-    <!--     <div class="container" id="box">
-        <div class="row">
-            
-        </div>
-    </div> -->
+    <!--end main container-->
+
     <footer class="page-footer">
         <div class="container">
             © 2018 Copyright
             <a class="grey-text text-lighten-4 right" href="#!"></a>
         </div>
     </footer>
-
-
-
-
-    <!--javaScript-->
-
-
 </body>
-
-
 </html>
