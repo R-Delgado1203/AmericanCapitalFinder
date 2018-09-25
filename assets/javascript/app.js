@@ -24,10 +24,11 @@ $(document).ready(function () {
       //google static img appi call
       var mapApiLink = "https://maps.googleapis.com/maps/api/staticmap?center=" + query + "&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I"
       var map = $("<img>").attr("src", mapApiLink);
-      map.appendTo("#map-p");
+      map.attr("id", "map-img");
+      map.prependTo("#map-p");
 
       var mapLink = "https://www.google.com/maps/place/" + query;
-      $("#map-link").attr("href", mapLink);
+      $("#map-link").attr("href", mapLink);      
       $("#map-link").text("Link to Maps");
 
     });
@@ -73,6 +74,12 @@ $(document).ready(function () {
       callAPI(city);
     };
   });//end submit-btn
+
+  $("#clear-btn").on("click", function () {
+    $("div#info-card").hide();
+    $("div#map-card").hide();
+    $('#state-list').val("");
+  });//end clear-btn
 
   //fill auto-complete form
   $('input.autocomplete').autocomplete({

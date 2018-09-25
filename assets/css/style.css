@@ -1,26 +1,19 @@
-#blah {
-    text-align: center;
-    height: 200px;
-}
 #info {
     text-align: center;
 }
 #head {
     color: white;
     font-size: 30px;
-    background-color: #1e88e5;
-    
+    background-color: #1e88e5;    
 }
 .btn {
     background-color: whitesmoke;
     color:black;
 }
-
 body {
     background: url(../images/capitol-hill.jpg);
     background-size: cover;
-    background-attachment: fixed; 
-    
+    background-attachment: fixed;     
 }
 main {
     flex: 1 0 auto;
@@ -29,8 +22,7 @@ main {
     padding-top: 25px;
     padding-right: 0px;
     padding-left: 50px;
-    margin-left: 30px;
-    
+    margin-left: 30px;    
 }
 #input-form{
     padding-left: 0px;
@@ -45,21 +37,29 @@ main {
     color: white;
     text-align: center;
 }
-img {
+#menu-img {
     height: 150px;
-    width: 250px;
+    width: 300px;
 }
 #return {
     background-color: whitesmoke;
     color: black;
     font-size: 22px;
-    font-family: 'Raleway', sans-serif;
-    
+    font-family: 'Raleway', sans-serif;    
 }
-#clear-btn {
-    background-color: rgb(18, 171, 218);
-    background-color: whitesmoke;
-    color:black;
+#submit-btn{
+    background-color: #1e88e5;
+    color: white;
+}
+#clear-btn{
+    background-color: #1e88e5;
+    color: white;
+}
+#clear-btn:hover{
+    background-color: #f44336;
+}
+#submit-btn:hover{
+    background-color: #f44336;
 }
 .material-icons{
     color:whitesmoke;
@@ -69,13 +69,8 @@ img {
 }
 #state-list{
     background-color: whitesmoke;
-    /* background-color: rgb(18, 171, 218); */
     color: black;
     padding-left: 5px;
-    font-weight: bold;
-}
-#search-container {
-    /* background-color: whitesmoke; */
 }
 .autocomplete{
     color: white;
@@ -86,7 +81,21 @@ img {
 }
 #info-card {
     display: none;
+    line-height: 150%
 }
-img {
-    height: 300px;
+#info-title{
+    font-weight: bold;
+    border-bottom: solid 
 }
+.section-search input.autocomplete {
+    color: #000;
+  }
+  .input-field .prefix.active {
+    color: white!important;
+  }
+  .dropdown-content li>a, .dropdown-content li>span {
+    color: #000!important;
+  }
+  .autocomplete-content li .highlight {
+    color: #f44336 !important;
+  }
