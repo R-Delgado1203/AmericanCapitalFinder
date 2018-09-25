@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  //google api key AIzaSyDTZRIT6DforQUfSkNAOPXkdeC0s3OxD_I
-
   //api call/build domm
   function callAPI(query) {
     var wikiUrl = 'https://en.wikipedia.org/w/api.php?format=json&formatversion=2&action=query&prop=extracts&exintro&explaintext&redirects=1&callback=?&titles=';
@@ -45,7 +43,8 @@ $(document).ready(function () {
     messagingSenderId: "715446005740"
   };
   firebase.initializeApp(config);
-
+  
+  //set db object to local obj variable for access
   var db = firebase.database();
   var statesObj = {};
   db.ref().on('value', function (snapshot) {
@@ -53,16 +52,17 @@ $(document).ready(function () {
     console.log(statesObj);
   });
 
+  //submit onclick handler
   $("#submit-btn").on("click", function () {
     $("div#info-card").show();
     $("div#map-card").show();
-    var obj = document.createElement("audio");
-    obj.src = "http://soundbible.com/grab.php?id=1844&type=wav";
-    obj.volume = 0.1;
-    obj.autoPlay = false;
-    obj.preLoad = true;
-    obj.controls = true;
-    obj.play();
+    var eagle = document.createElement("audio");
+    eagle.src = "http://soundbible.com/grab.php?id=1844&type=wav";
+    eagle.volume = 0.1;
+    eagle.autoPlay = false;
+    eagle.preLoad = true;
+    eagle.controls = true;
+    eagle.play();
     var state = $("#state-list").val();
     state = state.replace(/ /g, "_");
     console.log(state);
